@@ -6,13 +6,13 @@
 #    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 13:21:14 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/06 13:26:00 by lumarque         ###   ########.fr        #
+#    Updated: 2023/09/06 17:28:00 by lumarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = src/main.c src/utils.c src/create_map.c src/clean_exit.c \
+SRC = src/main.c #src/utils.c src/create_map.c src/clean_exit.c \
 		src/check_map.c src/graphics.c src/moves.c
 
 OBJS = ${SRC:.c=.o}
@@ -23,7 +23,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 INCLUDE = -I include
 MAKE = make -C
 LIBFT_PATH = libs/libft
-MLX_PATH = libs/mlx
+MLX_PATH = libs/minilibx-linux
 LIBFT = -L ${LIBFT_PATH} -lft
 MLX	= -L ${MLX_PATH} -lmlx -Ilmlx -lXext -lX11 -lm 
 
