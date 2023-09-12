@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
+#    By: lucas <lucas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 13:21:14 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/06 17:28:00 by lumarque         ###   ########.fr        #
+#    Updated: 2023/09/12 10:37:00 by lucas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ $(NAME): ${OBJS}
 all:	${NAME}
 
 clean:
+		${RM} ${OBJS}
 		${MAKE} ${LIBFT_PATH} clean
 		${MAKE} ${MLX_PATH} clean
-		${RM} ${OBJS}
 
 fclean: clean
 		${MAKE} ${LIBFT_PATH} fclean
