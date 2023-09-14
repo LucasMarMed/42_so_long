@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/07 18:07:28 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:42:00 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@
 
 #define RED_PIXEL 0xFF0000
 
-typedef struct s_data
+int	handle_keypress(int keysym, t_mlx *data)
 {
-    void	*mlx_ptr;
-    void	*win_ptr;
-}	t_data;
-
-int	handle_keypress(int keysym, t_data *data)
-{
-    if (keysym == XK_Escape)
+	if (keysym == UP || keysym == W )
+			//pos->hero = y+1;
+	if (keysym == DOWN || keysym == S)
+			//pos->hero = y-1;
+	if (keysym == LEFT || keysym == A)
+			//pos->hero = x-1;
+	if (keysym == RIGHT || keysym == D)
+			//pos->hero = x+1;
+    if (keysym == ESC)
     {
         mlx_destroy_window(data->mlx_ptr, data->win_ptr);
         data->win_ptr = NULL;
@@ -41,7 +43,7 @@ int	handle_keypress(int keysym, t_data *data)
     return (0);
 }
 
-int	render(t_data *data)
+int	render(t_mlx *data)
 {
     /* if window has been destroyed, we don't want to put the pixel ! */
     if (data->win_ptr != NULL)
@@ -52,7 +54,7 @@ int	render(t_data *data)
 
 int	main(void)
 {
-    t_data	data;
+    t_mlx	data;
 
     data.mlx_ptr = mlx_init();
     if (data.mlx_ptr == NULL)

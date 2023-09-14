@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:25:56 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/07 18:06:12 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:39:28 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>//malloc
 # include <stdio.h>//printf
 # include <stdbool.h>//bool
-# include "/nfs/homes/lumarque/Github/42_so_long/libs/minilibx-linux/mlx.h"
+# include "../libs/minilibx-linux/mlx.h"
 
 /* Color codes for printf  */
 # define DEFAULT "\033[0;39m"
@@ -34,6 +34,14 @@
 /* Sprite Size */
 # define SIZE 32
 
+/* Window */
+typedef struct s_mlx
+{
+    void	*mlx_ptr;
+    void	*win_ptr;
+}	t_mlx;
+
+/* keysym */
 enum e_key
 {
 	ESC		= 65307,
@@ -50,8 +58,7 @@ enum e_key
 typedef struct s_map
 {
 	char	**tiles;
-	int	cols;
-	int	rows;
+	t_point	pos;
 	int	coins;
 	int	exit;
 	int	player;
@@ -59,10 +66,20 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	int	x; // cols
+	int	y; // rows
 }	t_point;
 
+typedef struct s_game
+{
+	t_map		*map;
+	t_point		curr;
+	t_point		next;
+	t_mlx	display;
+	t_sprite	*sp;
+	int		coins;
+	int		moves;
+}					t_game;
 
 
 
