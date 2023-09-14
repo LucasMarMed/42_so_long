@@ -6,26 +6,19 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/13 16:42:00 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:59:09 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-
-#include <X11/X.h>
-#include <X11/keysym.h>
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 300
 
-#define MLX_ERROR 1
 
-#define RED_PIXEL 0xFF0000
 
-int	handle_keypress(int keysym, t_mlx *data)
+int	handle_keypress(int keysym, t_game *game)
 {
 	if (keysym == UP || keysym == W )
 			//pos->hero = y+1;
@@ -37,39 +30,60 @@ int	handle_keypress(int keysym, t_mlx *data)
 			//pos->hero = x+1;
     if (keysym == ESC)
     {
-        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-        data->win_ptr = NULL;
+        mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+        game->win_ptr = NULL;
     }
     return (0);
 }
 
-int	render(t_mlx *data)
+int	render(t_game *game)
 {
     /* if window has been destroyed, we don't want to put the pixel ! */
-    if (data->win_ptr != NULL)
-        mlx_pixel_put(data->mlx_ptr, data->win_ptr, 
+    if (game->win_ptr != NULL)
+        mlx_pixel_put(game->mlx_ptr, game->win_ptr, 
             WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, RED_PIXEL);
     return (0);
 }
 
-int	main(void)
+void init_game(char *file)
 {
-    t_mlx	data;
+	t_game game;
 
-    data.mlx_ptr = mlx_init();
-    if (data.mlx_ptr == NULL)
-        return (MLX_ERROR);
-    data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-                                "my window");
-    if (data.win_ptr == NULL)
-    {
-        free(data.win_ptr);
-        return (MLX_ERROR);
+	ft_bzero(&game, sizeof(t_game));
+	read_map(&game, file);
+	check_map(&game);
+	launch_mlx(&game, game.map);
+	load_assets(&game);
+	render_map(&game, game.map);
+	mlx_hook(game.mlx_ptr, ON_KEYPRESS, KEYPRESS_MASK, check_keypress, &game);
+	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, quit_game, &game);
+	mlx_loop_hook(game.mlx_ptr, render_move, &game);
+	mlx_loop(game.mlx_ptr);
+	
+	
+	game.mlx_ptr = mlx_init();
+	if (game.mlx_ptr == NULL)
+	    return (MLX_ERROR);
+	game.win_ptr = mlx_new_window(game.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
+									"my window");
+	if (game.win_ptr == NULL)
+	{
+		free(game.win_ptr);
+		return (MLX_ERROR);
     }
 
+}
+
+
+int	main(void)
+{
+	t_game so_long;
+
+	init_game(so_long);
+	
     /* Setup hooks */ 
     mlx_loop_hook(data.mlx_ptr, &render, &data);
-    mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+    mlx_hook(data.win_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &data);
 
     mlx_loop(data.mlx_ptr);
 
