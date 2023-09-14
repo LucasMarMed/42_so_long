@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:25:56 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 16:54:50 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/14 18:12:32 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@
 # define KEYPRESS_MASK	3
 
 # define ON_CLOSE 17
-# define CLOSE_MASK		0
+# define CLOSE_MASK	0
 
-# define EXPOSE		12
-# define EXPOSURE_MASK		32768
+# define EXPOSE	12
+# define EXPOSURE_MASK	32768
 
 #define MLX_ERROR 1
 
