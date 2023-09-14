@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 16:59:09 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:40:22 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void init_game(char *file)
 	launch_mlx(&game, game.map);
 	load_assets(&game);
 	render_map(&game, game.map);
-	mlx_hook(game.mlx_ptr, ON_KEYPRESS, KEYPRESS_MASK, check_keypress, &game);
+	mlx_hook(game.mlx_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &game);
 	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, quit_game, &game);
 	mlx_loop_hook(game.mlx_ptr, render_move, &game);
 	mlx_loop(game.mlx_ptr);
@@ -75,19 +75,21 @@ void init_game(char *file)
 }
 
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	t_game so_long;
-
-	init_game(so_long);
-	
-    /* Setup hooks */ 
-    mlx_loop_hook(data.mlx_ptr, &render, &data);
-    mlx_hook(data.win_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &data);
-
-    mlx_loop(data.mlx_ptr);
-
-    /* we will exit the loop if there's no window left, and execute this code */
-    mlx_destroy_display(data.mlx_ptr);
-    free(data.mlx_ptr);
+	if (ac != 2)
+		exit_error(NULL, "Invalid number of arguments.");
+	check_filename(av[1]);
+	init_game(av[1]);
 }
+
+    // /* Setup hooks */ 
+    // mlx_loop_hook(data.mlx_ptr, &render, &data);
+    // mlx_hook(data.win_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &data);
+
+    // mlx_loop(data.mlx_ptr);
+
+    // /* we will exit the loop if there's no window left, and execute this code */
+    // mlx_destroy_display(data.mlx_ptr);
+    // free(data.mlx_ptr);
+	// //

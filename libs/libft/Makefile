@@ -6,12 +6,12 @@
 #    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/16 14:47:25 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/14 16:18:24 by lumarque         ###   ########.fr        #
+#    Updated: 2023/09/14 18:07:04 by lumarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-INCLUDE = libft.h
+INCLUDE = libft.h printf.h ./42_get_next_line/get_next_line_bonus.h
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
@@ -26,6 +26,8 @@ SRC = ft_atoi.c ft_strlen.c ft_bzero.c ft_memset.c ft_calloc.c ft_isalnum.c \
 		ft_printf.c ft_print_alpha.c ft_putnbase.c	\
 		ft_lstsize.c ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
 		ft_lstnew.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
+		./42_get_next_line/get_next_line_bonus.c \
+		./42_get_next_line/get_next_line_utils_bonus.c
 		
 OBJS = ${SRC:.c=.o}
 

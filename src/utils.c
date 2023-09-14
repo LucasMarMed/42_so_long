@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 16:33:26 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 17:12:42 by lumarque         ###   ########.fr       */
+/*   Created: 2023/09/14 17:27:04 by lumarque          #+#    #+#             */
+/*   Updated: 2023/09/14 17:27:22 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	render_map(t_game *so_long, t_map *map)
+int	exit_error(t_game *so_long, char *msg)
 {
-	int	x;
-	int	y;
+	clean_game(so_long);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	exit (EXIT_FAILURE);
+}
 
-	y = -1;
-	while (++y < map->pos->rows)
-	{
-		x = -1;
-		while (++x < map->pos->cols)
-			render_tile(so_long, (t_point){x, y});
-	}
+void	check_filename(char *file)
+{
+	size_t	i;
+
+	i = ft_strlen(file);
+	if (i <= 4)
+		exit_error(NULL, "Invalid file name.");
+	else if (!ft_strnstr((file + i - 4), ".ber", 4))
+		exit_error(NULL, "Invalid file extension.");
 }
