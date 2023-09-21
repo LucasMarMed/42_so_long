@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:33:26 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 18:20:21 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:51:42 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,31 @@ int	get_rows(t_game *game, char *file)
 	return (rows);
 }
 
-
-void	check_map(t_game *game)
+void	render_tile(t_game *game, t_point p)
 {
-
+	if (game->map->tiles[p.y][p.x] == WALL)
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->wall.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
+	else if (game->map->tiles[p.y][p.x] == COIN)
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->collect.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
+	else if (game->map->tiles[p.y][p.x] == EXIT)
+	{
+		game->exit.x = p.x * SIZE;
+		game->exit.y = p.y * SIZE;
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->exit.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
+	else
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->floor.ptr, (p.x * SIZE), (p.y * SIZE));
 }
 
-
-void	render_map(t_game *so_long, t_map *map)
+void	render_map(t_game *game, t_map *map)
 {
 	int	x;
 	int	y;
@@ -69,7 +86,7 @@ void	render_map(t_game *so_long, t_map *map)
 	{
 		x = -1;
 		while (++x < map->pos.x)
-			render_tile(so_long, (t_point){x, y});
+			render_tile(game, (t_point){x, y});
 	}
 }
 
@@ -99,3 +116,4 @@ void	read_map(t_game *game, char *file)
 	}
 	close (fd);
 }
+

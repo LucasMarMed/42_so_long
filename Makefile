@@ -6,13 +6,18 @@
 #    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 13:21:14 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/21 17:36:08 by lumarque         ###   ########.fr        #
+#    Updated: 2023/09/21 19:08:54 by lumarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = src/main.c src/utils.c src/map.c src/endgame.c src/init_game.c
+SRC = src/main.c \
+		src/init_game.c \
+		src/endgame.c \
+		src/utils.c \
+		src/map.c \
+		src/check_map.c
 		
 
 OBJS = ${SRC:.c=.o}
@@ -20,7 +25,7 @@ OBJS = ${SRC:.c=.o}
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -g
-INCLUDE = -I include
+INCLUDE = -I ./include
 MAKE = make -C
 LIBFT_PATH = libs/libft
 MLX_PATH = libs/minilibx-linux

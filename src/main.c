@@ -6,39 +6,17 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/21 17:35:50 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:56:24 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 300
 
-
-
-int	handle_keypress(int keysym, t_game *game)
+void	init_game(char *file)
 {
-	if (keysym == UP || keysym == W )
-			//pos->hero = y+1;
-	if (keysym == DOWN || keysym == S)
-			//pos->hero = y-1;
-	if (keysym == LEFT || keysym == A)
-			//pos->hero = x-1;
-	if (keysym == RIGHT || keysym == D)
-			//pos->hero = x+1;
-    if (keysym == ESC)
-    {
-        mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-        game->win_ptr = NULL;
-    }
-    return (0);
-}
-
-void init_game(char *file)
-{
-	t_game game;
+	t_game	game;
 
 	ft_bzero(&game, sizeof(t_game));
 	read_map(&game, file);
@@ -50,19 +28,16 @@ void init_game(char *file)
 	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, endgame, &game);
 	mlx_loop_hook(game.mlx_ptr, render_move, &game);
 	mlx_loop(game.mlx_ptr);
-	
-	
 	game.mlx_ptr = mlx_init();
 	if (game.mlx_ptr == NULL)
-	    return (MLX_ERROR);
-	game.win_ptr = mlx_new_window(game.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-									"my window");
+		return (MLX_ERROR);
+	game.win_ptr = mlx_new_window(game.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, \
+	"my window");
 	if (game.win_ptr == NULL)
 	{
 		free(game.win_ptr);
 		return (MLX_ERROR);
-    }
-
+	}
 }
 
 int	main(int ac, char **av)

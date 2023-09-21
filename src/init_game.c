@@ -6,12 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:50:58 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/21 16:13:27 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:52:24 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
-
 
 void	launch_mlx(t_game *game, t_map *map)
 {
@@ -37,34 +36,28 @@ void	load_img(t_game *game)
 	return ;
 }
 
-void	render_tile(t_game *game, t_point p)
-{
-	if (game->map->tiles[p.y][p.x] == WALL)
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-		game->wall.ptr, (p.x * SIZE), (p.y * SIZE));
-	}
-	else if (game->map->tiles[p.y][p.x] == COIN)
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-		game->collect.ptr, (p.x * SIZE), (p.y * SIZE));
-	}
-	else if (game->map->tiles[p.y][p.x] == EXIT)
-	{
-		game->exit.x = p.x * SIZE;
-		game->exit.y = p.y * SIZE;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-		game->exit.ptr, (p.x * SIZE), (p.y * SIZE));
-	}
-	else
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-		game->floor.ptr, (p.x * SIZE), (p.y * SIZE));
-}
-
 t_img	new_sprite(void *mlx, char *path)
 {
 	t_img	img;
 
 	img.ptr = mlx_xpm_file_to_image(mlx, path, &img.x, &img.y);
 	return (img);
+}
+
+int	handle_keypress(int keysym, t_game *game)
+{
+	if (keysym == UP || keysym == W )
+			//pos->hero = y+1;
+	if (keysym == DOWN || keysym == S)
+			//pos->hero = y-1;
+	if (keysym == LEFT || keysym == A)
+			//pos->hero = x-1;
+	if (keysym == RIGHT || keysym == D)
+			//pos->hero = x+1;
+	if (keysym == ESC)
+	{
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		game->win_ptr = NULL;
+	}
+	return (0);
 }
