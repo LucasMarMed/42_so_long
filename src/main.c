@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 17:40:22 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:35:50 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,6 @@ int	handle_keypress(int keysym, t_game *game)
     return (0);
 }
 
-int	render(t_game *game)
-{
-    /* if window has been destroyed, we don't want to put the pixel ! */
-    if (game->win_ptr != NULL)
-        mlx_pixel_put(game->mlx_ptr, game->win_ptr, 
-            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, RED_PIXEL);
-    return (0);
-}
-
 void init_game(char *file)
 {
 	t_game game;
@@ -53,10 +44,10 @@ void init_game(char *file)
 	read_map(&game, file);
 	check_map(&game);
 	launch_mlx(&game, game.map);
-	load_assets(&game);
+	load_img(&game);
 	render_map(&game, game.map);
 	mlx_hook(game.mlx_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &game);
-	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, quit_game, &game);
+	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, endgame, &game);
 	mlx_loop_hook(game.mlx_ptr, render_move, &game);
 	mlx_loop(game.mlx_ptr);
 	
@@ -74,7 +65,6 @@ void init_game(char *file)
 
 }
 
-
 int	main(int ac, char **av)
 {
 	if (ac != 2)
@@ -82,14 +72,3 @@ int	main(int ac, char **av)
 	check_filename(av[1]);
 	init_game(av[1]);
 }
-
-    // /* Setup hooks */ 
-    // mlx_loop_hook(data.mlx_ptr, &render, &data);
-    // mlx_hook(data.win_ptr, ON_KEYPRESS, KEYPRESS_MASK, &handle_keypress, &data);
-
-    // mlx_loop(data.mlx_ptr);
-
-    // /* we will exit the loop if there's no window left, and execute this code */
-    // mlx_destroy_display(data.mlx_ptr);
-    // free(data.mlx_ptr);
-	// //

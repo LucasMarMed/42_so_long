@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas <lucas@student.42.fr>                +#+  +:+       +#+         #
+#    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 13:21:14 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/12 10:37:00 by lucas            ###   ########.fr        #
+#    Updated: 2023/09/21 17:36:08 by lumarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = src/main.c #src/utils.c src/create_map.c src/clean_exit.c \
-		src/check_map.c src/graphics.c src/moves.c
+SRC = src/main.c src/utils.c src/map.c src/endgame.c src/init_game.c
+		
 
 OBJS = ${SRC:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:50:58 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 18:25:00 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:13:27 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,47 @@ void	launch_mlx(t_game *game, t_map *map)
 		exit_error(game, "Failed to create window.");
 }
 
-/*void	load_assets(t_game *game)
+void	load_img(t_game *game)
 {
-	game->sp = malloc(SPRITES * sizeof(t_sprite));
-	if (!game->sp)
-		exit_error(game, "Failed to allocate memory on sprites.");
-	game->sp[W1].img = mlx_xpm_file_to_image(game->display.mlx, FW1, \
-			&(game->sp[W1].width), &(game->sp[W1].height));
-	game->sp[S1].img = mlx_xpm_file_to_image(game->display.mlx, FS1, \
-			&(game->sp[S1].width), &(game->sp[S1].height));
-	game->sp[C1].img = mlx_xpm_file_to_image(game->display.mlx, FC1, \
-			&(game->sp[C1].width), &(game->sp[C1].height));
-	game->sp[E1].img = mlx_xpm_file_to_image(game->display.mlx, FE1, \
-			&(game->sp[E1].width), &(game->sp[E1].height));
-	game->sp[P1].img = mlx_xpm_file_to_image(game->display.mlx, FP1, \
-			&(game->sp[P1].width), &(game->sp[P1].height));
+	game->wall = new_sprite(game->mlx_ptr, WALL_PATH);
+	game->floor = new_sprite(game->mlx_ptr, FLOOR_PATH);
+	game->collect = new_sprite(game->mlx_ptr, COLLECT_PATH);
+	game->exit = new_sprite(game->mlx_ptr, EXIT_PATH);
+	game->character = new_sprite(game->mlx_ptr, CHAR_PATH);
+	game->character_l = new_sprite(game->mlx_ptr, CHAR_L_PATH);
+	game->character_r = new_sprite(game->mlx_ptr, CHAR_R_PATH);
+	game->character_u = new_sprite(game->mlx_ptr, CHAR_U_PATH);
+	return ;
 }
 
 void	render_tile(t_game *game, t_point p)
 {
-	t_sprite	sp;
-
 	if (game->map->tiles[p.y][p.x] == WALL)
-		sp = game->sp[W1];
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->wall.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
 	else if (game->map->tiles[p.y][p.x] == COIN)
-		sp = game->sp[C1];
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->collect.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
 	else if (game->map->tiles[p.y][p.x] == EXIT)
-		sp = game->sp[E1];
-	else if (game->map->tiles[p.y][p.x] == SPACE)
-		sp = game->sp[S1];
-	else if (game->map->tiles[p.y][p.x] == PLAYER)
-		sp = game->sp[P1];
-	mlx_put_image_to_window(game->display.mlx, game->display.win, \
-		sp.img, sp.width * p.x, sp.height * p.y);
+	{
+		game->exit.x = p.x * SIZE;
+		game->exit.y = p.y * SIZE;
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->exit.ptr, (p.x * SIZE), (p.y * SIZE));
+	}
+	else
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
+		game->floor.ptr, (p.x * SIZE), (p.y * SIZE));
 }
-*/
+
+t_img	new_sprite(void *mlx, char *path)
+{
+	t_img	img;
+
+	img.ptr = mlx_xpm_file_to_image(mlx, path, &img.x, &img.y);
+	return (img);
+}

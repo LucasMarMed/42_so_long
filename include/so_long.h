@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:25:56 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/14 18:12:32 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:35:48 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,40 @@
 /* Key events */
 # define ON_KEYPRESS 2
 # define KEYPRESS_MASK	3
-
 # define ON_CLOSE 17
 # define CLOSE_MASK	0
-
 # define EXPOSE	12
 # define EXPOSURE_MASK	32768
+# define MLX_ERROR 1
 
-#define MLX_ERROR 1
+/* Path images*/
+# define WALL_PATH		"./img/tree.xpm"
+# define FLOOR_PATH		"./img/floor.xpm"
+# define COLLECT_PATH	"./img/potion.xpm"
+# define EXIT_PATH		"./img/portal.xpm"
+# define CHAR_PATH		"./img/link_sprites/down_1__.xpm"
+# define CHAR_L_PATH	"./img/link_sprites/left_1__.xpm"
+# define CHAR_R_PATH	"./img/link_sprites/right_1__.xpm"
+# define CHAR_U_PATH	"./img/link_sprites/up_1__.xpm"
+
+/* Rules map*/
+typedef enum e_tile
+{
+	SPACE	= '0',
+	WALL	= '1',
+	COIN	= 'C',
+	EXIT	= 'E',
+	PLAYER	= 'P',
+}			t_tile;
+
+/* */
+typedef struct s_draw
+{
+	char	**map;
+	int		height;
+	int		length;
+	char	*line;
+}	t_draw;
 
 /* Window 
 typedef struct s_mlx
@@ -72,6 +98,17 @@ enum e_key
 	LEFT	= 65361,
 	RIGHT	= 65363,
 };
+
+typedef struct s_img
+{
+	void	*ptr;
+	int		*pixels;
+	int		line_size;
+	int		mem;
+	int		x;
+	int		y;
+	int		movements;
+}	t_img;
 
 typedef struct s_map
 {
@@ -96,12 +133,24 @@ typedef struct s_game
 	t_map		*map;
 	t_point		curr;
 	t_point		next;
-//	t_mlx	display;
-	t_sprite	*sp;
-	int		coins;
+	t_img		character;
+	t_img		character_l;
+	t_img		character_r;
+	t_img		character_u;
+	t_img		floor;
+	t_img		wall;
+	t_img		collect;
+	t_img		exit;
 	int		moves;
 }					t_game;
 
 
+int	exit_error(t_game *so_long, char *msg);
+void	check_filename(char *file);
+t_map	*create_map(int cols, int rows);
+int	get_rows(t_game *game, char *file);
+void	render_map(t_game *so_long, t_map *map);
+void	read_map(t_game *game, char *file);
+int	endgame(t_game *game);
 
 #endif
