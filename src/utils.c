@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:27:04 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/21 17:37:25 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:56:51 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,31 @@ void	check_filename(char *file)
 		exit_error(NULL, "Invalid file extension.");
 }
 
+t_tile	get_tile(t_game *so_long, t_point p)
+{
+	return (so_long->map->tiles[p.y][p.x]);
+}
+
+int	is_same_point(t_point a, t_point b)
+{
+	return (a.x == b.x && a.y == b.y);
+}
+
+int	flood_fill(t_map *map, t_point curr, char **path)
+{
+	static int	coins = 0;
+	static int	exit = 0;
+
+	if (path[curr.y][curr.x] == WALL)
+		return (0);
+	else if (path[curr.y][curr.x] == COIN)
+		coins++;
+	else if (path[curr.y][curr.x] == EXIT)
+		exit = 1;
+	path[curr.y][curr.x] = WALL;
+	flood_fill(map, (t_point){curr.x + 1, curr.y}, path);
+	flood_fill(map, (t_point){curr.x - 1, curr.y}, path);
+	flood_fill(map, (t_point){curr.x, curr.y + 1}, path);
+	flood_fill(map, (t_point){curr.x, curr.y - 1}, path);
+	return (coins == map->coins && exit == 1);
+}

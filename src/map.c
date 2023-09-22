@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:33:26 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/21 18:51:42 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:56:01 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,3 @@ void	read_map(t_game *game, char *file)
 	}
 	close (fd);
 }
-

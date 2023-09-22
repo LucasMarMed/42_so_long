@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:14:31 by lumarque          #+#    #+#             */
-/*   Updated: 2023/06/11 18:08:29 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:55:44 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdarg.h>
+# include "libft.h"
 
 int		ft_printf(const char *format, ...);
 int		ft_putnbase(unsigned long nbr, const char *base, int fd);

@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 14:47:30 by lumarque          #+#    #+#             */
-/*   Updated: 2023/07/08 18:53:35 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:55:07 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <ctype.h>
-# include <stdarg.h>
-
+# include "printf.h"
 
 typedef struct s_list
 {
@@ -74,16 +73,5 @@ int			ft_isascii(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_strncmp(const char *str1, const char *str2, size_t n);
-
-int			ft_printf(const char *format, ...);
-int			ft_putnbase(unsigned long nbr, const char *base, int fd);
-void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd);
-int			ft_print_char(char c, int fd);
-int			ft_print_percent(void);
-int			ft_print_str(char *s, int fd);
-int			ft_printnbr_fd(int n, int fd);
-int			ft_nbrlen(long nbr, int base);
-size_t		ft_strlen(const char *str);
 
 #endif

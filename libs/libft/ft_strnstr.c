@@ -6,20 +6,10 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:30:25 by lumarque          #+#    #+#             */
-/*   Updated: 2023/04/19 20:20:56 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:07:47 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** LIBRARY: <string.h>
-** SYNOPSIS: locate a substring in a string (size-bounded)
-**
-** DESCRIPTION:
-** 		The strnstr() function locates the first occurrence of the null-termi-
-**	nated string s2 in the string s1, where not more than n characters are
-**	searched.  Characters that appear after a `\0' character are not
-**	searched.
-*/
 #include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)

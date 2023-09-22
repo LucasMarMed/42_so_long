@@ -6,7 +6,7 @@
 #    By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 13:21:14 by lumarque          #+#    #+#              #
-#    Updated: 2023/09/21 19:08:54 by lumarque         ###   ########.fr        #
+#    Updated: 2023/09/22 20:35:01 by lumarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC = src/main.c \
 		src/endgame.c \
 		src/utils.c \
 		src/map.c \
-		src/check_map.c
+		src/check_map.c \
+		src/moves.c
 		
 
 OBJS = ${SRC:.c=.o}

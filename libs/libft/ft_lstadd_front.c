@@ -6,15 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:48:57 by lumarque          #+#    #+#             */
-/*   Updated: 2023/05/04 20:44:43 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:01:56 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/**
- * Adds the element ’new’ at the beginning of the list.
- */
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {

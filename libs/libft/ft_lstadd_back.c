@@ -6,15 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:53:21 by lumarque          #+#    #+#             */
-/*   Updated: 2023/05/06 16:15:50 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:01:59 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/**
- * Adds the element ’new’ at the end of the list.
- */
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:01:07 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/21 19:08:56 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:02:52 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,12 @@ typedef struct s_img
 	int		movements;
 }	t_img;
 
+typedef struct s_point
+{
+	int	x; // cols
+	int	y; // rows
+}			t_point;
+
 typedef struct s_map
 {
 	char	**tiles;
@@ -110,12 +116,6 @@ typedef struct s_map
 	int	exit;
 	int	player;
 }			t_map;
-
-typedef struct s_point
-{
-	int	x; // cols
-	int	y; // rows
-}	t_point;
 
 typedef struct s_game
 {
@@ -133,7 +133,8 @@ typedef struct s_game
 	t_img		wall;
 	t_img		collect;
 	t_img		exit;
-	int		moves;
+	int			coin;
+	int			moves;
 }					t_game;
 
 #endif

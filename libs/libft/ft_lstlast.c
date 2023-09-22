@@ -6,15 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:55:03 by lumarque          #+#    #+#             */
-/*   Updated: 2023/05/06 17:15:38 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:02:40 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/**
- * Returns the last element of the list.
- */
 
 t_list	*ft_lstlast(t_list *lst)
 {

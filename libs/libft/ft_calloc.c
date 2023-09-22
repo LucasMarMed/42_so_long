@@ -6,20 +6,9 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:59:03 by lumarque          #+#    #+#             */
-/*   Updated: 2023/04/19 20:05:02 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:01:17 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** LIBRARY: <stdlib.h>
-** SYNOPSIS: memory allocation
-**
-** DESCRIPTION:
-** 		The calloc() function contiguously allocates enough space for count
-**	objects that are size bytes of memory each and returns a pointer to the
-**	allocated memory. The allocated memory is filled with bytes of value
-**	zero.
-*/
 
 #include "libft.h"
 

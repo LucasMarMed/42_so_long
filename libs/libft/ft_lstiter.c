@@ -6,16 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 17:06:45 by lumarque          #+#    #+#             */
-/*   Updated: 2023/05/06 18:01:50 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:02:30 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/**
- * Iterates the list ’lst’ and applies the function
- * ’f’ to the content of each element.
- */
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

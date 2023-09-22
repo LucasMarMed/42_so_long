@@ -6,23 +6,11 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 16:30:42 by lumarque          #+#    #+#             */
-/*   Updated: 2023/04/19 21:00:49 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:06:01 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// size_t	ft_strlen(const char *s)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (s[i] != '\0')
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
