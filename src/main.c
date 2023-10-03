@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:17:47 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 20:49:08 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:02:43 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	init_game(char *file)
 {
 	t_game	game;
-
+	//t_map *map;
 	ft_bzero(&game, sizeof(t_game));
 	printf("bzero \n");
 	read_map(&game, file);
@@ -24,8 +24,11 @@ void	init_game(char *file)
 	check_map(&game);
 	printf("check \n");
 	launch_mlx(&game, game.map);
+	printf("launch \n");
 	load_img(&game);
+	printf("load \n");
 	render_map(&game, game.map);
+	printf("render \n");
 	mlx_hook(game.mlx_ptr, ON_KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);
 	mlx_hook(game.mlx_ptr, ON_CLOSE, CLOSE_MASK, endgame, &game);
 	mlx_loop_hook(game.mlx_ptr, render_move, &game);

@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 16:17:09 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 21:13:37 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:07:31 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	destroy_image(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->character_l.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->character_r.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->character_u.ptr);
-	return ;
 }
 
 void	clean_tiles(char **tiles)

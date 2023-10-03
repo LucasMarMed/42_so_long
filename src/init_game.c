@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:50:58 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 17:19:55 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:18:25 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	load_img(t_game *game)
 	game->character_l = new_sprite(game->mlx_ptr, CHAR_L_PATH);
 	game->character_r = new_sprite(game->mlx_ptr, CHAR_R_PATH);
 	game->character_u = new_sprite(game->mlx_ptr, CHAR_U_PATH);
-	return ;
 }
 
 t_img	new_sprite(void *mlx, char *path)

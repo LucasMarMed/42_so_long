@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:25:56 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 20:06:44 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:16:24 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		render_move(t_game *game);
 
 int		endgame(t_game *game);
 void	clean_game(t_game *game);
+void	clean_tiles(char **tiles);
 
 int		exit_error(t_game *so_long, char *msg);
 void	check_filename(char *file);

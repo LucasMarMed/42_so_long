@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:45:49 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 18:38:13 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:24:16 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 bool	check_format(t_map *map)
 {
-	if (map->pos.x == map->pos.y)
+	int	i;
+	size_t	row_len;
+
+	i = -1;
+	row_len = ft_strlen(map->tiles[0]);
+	while (++i < map->pos.y)
 	{
-		return (false);
+		if (ft_strlen(map->tiles[i]) != row_len)
+			return (false);
 	}
+	map->pos.x = (int)row_len;
+	printf("%s\n", map->tiles[0]);
 	return (true);
 }
 
@@ -64,6 +72,33 @@ int	check_tiles(t_game *game, t_map *map)
 	return (map->player == 1 && map->exit == 1 && map->coins >= 1);
 }
 
+int	check_paths(t_game *game, t_map *map)
+{
+	int	i;
+	int		reach_exit;
+	char	**tiles;
+
+	i = -1;
+	reach_exit = 0;
+	tiles = ft_calloc(map->pos.y + 1, sizeof(char *));
+	if (!tiles)
+		exit_error(game, "Malloc failed.");
+	while (++i < map->pos.y)
+	{
+		tiles[i] = ft_strdup(map->tiles[i]);
+		{
+			if (!tiles[i])
+			{
+				clean_tiles(tiles);
+				exit_error(game, "Malloc failed.");
+			}
+		}
+	}
+	reach_exit = flood_fill(map, game->curr, tiles);
+	clean_tiles(tiles);
+	return (reach_exit);
+}
+
 void	check_map(t_game *game)
 {
 	if (!game->map->pos.y)
@@ -74,6 +109,6 @@ void	check_map(t_game *game)
 		exit_error(game, "Map is not surrounded by walls.");
 	if (!check_tiles(game, game->map))
 		exit_error(game, "Map has invalid tiles.");
-	//if (!check_paths(game, game->map)) // in working
-	//	exit_error(game, "Map has invalid path.");
+	if (!check_paths(game, game->map))
+		exit_error(game, "Map has invalid path.");
 }

@@ -6,7 +6,7 @@
 /*   By: lumarque <lumarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:33:26 by lumarque          #+#    #+#             */
-/*   Updated: 2023/09/22 20:56:01 by lumarque         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:30:56 by lumarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_map	*create_map(int cols, int rows)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
-	map->tiles = ft_calloc(rows + 1, sizeof(char *));
+	map->tiles = ft_calloc((rows + 1), sizeof(char *));
 	if (!map->tiles)
 	{
 		free(map);
@@ -56,9 +56,11 @@ void	render_tile(t_game *game, t_point p)
 {
 	if (game->map->tiles[p.y][p.x] == WALL)
 	{
+		printf("im here\n");  // verificar pos x e pos y
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 		game->wall.ptr, (p.x * SIZE), (p.y * SIZE));
 	}
+
 	else if (game->map->tiles[p.y][p.x] == COIN)
 	{
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
@@ -78,15 +80,14 @@ void	render_tile(t_game *game, t_point p)
 
 void	render_map(t_game *game, t_map *map)
 {
-	int	x;
-	int	y;
+	t_point position;
 
-	y = -1;
-	while (++y < map->pos.y)
+	position.y = -1;
+	while (++position.y < map->pos.y)
 	{
-		x = -1;
-		while (++x < map->pos.x)
-			render_tile(game, (t_point){x, y});
+		position.x = -1;
+		while (++position.x < map->pos.x)
+			render_tile(game, position);
 	}
 }
 
