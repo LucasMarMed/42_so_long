@@ -14,6 +14,8 @@
 
 void	destroy_image(t_game *game)
 {
+	if(!game->floor.ptr)
+		return ;
 	mlx_destroy_image(game->mlx_ptr, game->wall.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->floor.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->exit.ptr);
@@ -50,12 +52,12 @@ void	clean_game(t_game *game)
 		return ;
 	if (game->map)
 		clean_map(game->map);
+	destroy_image(game);
+
 	if (game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	if (game->win_ptr)
-		mlx_destroy_display(game->win_ptr);
-	destroy_image(game);
-	free(game->win_ptr);
+	if (game->mlx_ptr)
+		mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 }
 

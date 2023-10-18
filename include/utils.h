@@ -78,12 +78,12 @@ typedef struct s_mlx
 */
 
 /* keysym */
-typedef struct s_sprite
-{
-	void	*img;
-	int		height;
-	int		width;
-}			t_sprite;
+// typedef struct s_sprite
+// {
+// 	void	*img;
+// 	int		height;
+// 	int		width;
+// }			t_sprite;
 
 enum e_key
 {
