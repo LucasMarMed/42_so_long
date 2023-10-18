@@ -14,7 +14,6 @@
 
 void	destroy_image(t_game *game)
 {
-	//bug need fixed
 	mlx_destroy_image(game->mlx_ptr, game->wall.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->floor.ptr);
 	mlx_destroy_image(game->mlx_ptr, game->exit.ptr);
