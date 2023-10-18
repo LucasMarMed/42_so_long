@@ -18,25 +18,15 @@ void	init_game(char *file)
 	t_game	game;
 	
 	ft_bzero(&game, sizeof(t_game));
-	printf("bzero \n");
 	read_map(&game, file);
-	printf("read \n");
 	check_map(&game);
-	printf("check \n");
 	launch_mlx(&game, game.map);
-	printf("launch \n");
 	load_img(&game);
-	printf("load \n");
 	render_map(&game, game.map);
-	printf("render \n");
 	mlx_hook(game.win_ptr, ON_KEYPRESS, KEYPRESS_MASK, handle_keypress, &game);
-	printf("handle_keypress \n");
 	mlx_hook(game.win_ptr, ON_CLOSE, CLOSE_MASK, endgame, &game);
-	printf("endgame \n");
 	mlx_loop_hook(game.mlx_ptr, render_move, &game);
-	printf("move \n");
 	mlx_loop(game.mlx_ptr);
-	printf("finish \n");
 }
 
 int	main(int ac, char **av)

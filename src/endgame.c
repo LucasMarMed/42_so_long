@@ -64,5 +64,6 @@ void	clean_game(t_game *game)
 int	endgame(t_game *game)
 {
 	clean_game(game);
+	ft_putstr_fd("End Game !\n", 2);
 	exit(EXIT_SUCCESS);
 }
