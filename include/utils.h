@@ -60,31 +60,6 @@ typedef enum e_tile
 	PLAYER	= 'P',
 }			t_tile;
 
-/* */
-typedef struct s_draw
-{
-	char	**map;
-	int		height;
-	int		length;
-	char	*line;
-}	t_draw;
-
-/* Window 
-typedef struct s_mlx
-{
-    void	*mlx_ptr;
-    void	*win_ptr;
-}	t_mlx;
-*/
-
-/* keysym */
-// typedef struct s_sprite
-// {
-// 	void	*img;
-// 	int		height;
-// 	int		width;
-// }			t_sprite;
-
 enum e_key
 {
 	ESC		= 65307,
@@ -93,9 +68,9 @@ enum e_key
 	S		= 115,
 	D		= 100,
 	UP		= 65362,
-	DOWN	= 65364,
-	LEFT	= 65361,
-	RIGHT	= 65363,
+	DOWN		= 65364,
+	LEFT		= 65361,
+	RIGHT		= 65363,
 };
 
 typedef struct s_img
